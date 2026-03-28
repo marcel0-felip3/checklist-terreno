@@ -1,14 +1,14 @@
 // Service Worker - Checklist ENAMI PWA
 // Versión del cache - incrementar al actualizar archivos
-const CACHE_VERSION = 'enami-checklist-v1';
+const CACHE_VERSION = 'enami-checklist-v2';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
+  './jspdf.umd.min.js',
   './BD_minas.js',
   './manifest.json',
   './icon-192.png',
-  './icon-512.png',
-  'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.2/jspdf.umd.min.js'
+  './icon-512.png'
 ];
 
 // Install: cache all essential assets
