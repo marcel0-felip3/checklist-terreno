@@ -950,17 +950,40 @@ function generatePDF(data) {
   
   y = jefeY + firmaH + 1;
 
-  // ---- GARITERO section (blank for garitero to fill on printed PDF) ----
+  // ---- GARITERO section (editable PDF form fields) ----
   const garStartY = y;
   txt('Uso Exclusivo Gariteros, Secretar\u00edas.', LX, y, {size:7, bold:true});
   y += 3.5;
   txt('Nombre garitero y/o secretar\u00eda:', LX, y, {size:7});
-  line(LX + 52, y + 3, LX + LEFT_W, y + 3);
+  // Editable text field for garitero name
+  try {
+    var AcroFormTextField = window.jspdf.AcroFormTextField;
+    var nameField = new AcroFormTextField();
+    nameField.fieldName = 'gariteroNombre';
+    nameField.Rect = [LX + 52, y - 0.5, LEFT_W - 53, 5];
+    nameField.multiline = false;
+    nameField.maxFontSize = 9;
+    nameField.value = '';
+    doc.addField(nameField);
+  } catch(e) {
+    line(LX + 52, y + 3, LX + LEFT_W, y + 3);
+  }
   y += 6;
 
-  // Hora de llegada with box
+  // Hora de llegada with editable field
   txt('Hora de llegada:', LX, y + 1, {size:7});
-  rect(LX + 28, y - 0.5, 25, rh);
+  try {
+    var AcroFormTextField2 = window.jspdf.AcroFormTextField;
+    var horaField = new AcroFormTextField2();
+    horaField.fieldName = 'gariteroHora';
+    horaField.Rect = [LX + 28, y - 0.5, 25, rh];
+    horaField.multiline = false;
+    horaField.maxFontSize = 9;
+    horaField.value = '';
+    doc.addField(horaField);
+  } catch(e) {
+    rect(LX + 28, y - 0.5, 25, rh);
+  }
   y += rh + 1;
 
   // =============================================

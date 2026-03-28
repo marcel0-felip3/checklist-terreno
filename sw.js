@@ -1,6 +1,6 @@
 // Service Worker - Checklist ENAMI PWA
 // Versión del cache - incrementar al actualizar archivos
-const CACHE_VERSION = 'enami-checklist-v2';
+const CACHE_VERSION = 'enami-checklist-v3';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
